@@ -17,6 +17,7 @@ func main() {
 	fmt.Println("{id} denotes the Receipt id received after uploading the receipt")
 
 	api.UploadHandler()
+	api.PointsHandler()
 
 	http.ListenAndServe(":8000", nil)
 
