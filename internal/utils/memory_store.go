@@ -21,10 +21,10 @@ func GetStore() *models.Memory_store {
 				Receipts: make(map[string]models.Receipt),
 			}
 		} else {
-			fmt.Println("Store already Exists")
+			fmt.Println("Fetching Existing Store....\n")
 		}
 	} else {
-		fmt.Println("Store already Exists")
+		fmt.Println("Fetching Existing Store....\n")
 	}
 
 	return store

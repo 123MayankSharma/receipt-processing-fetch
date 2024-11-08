@@ -27,7 +27,7 @@ func PointsService(w http.ResponseWriter, r *http.Request) {
 	}
 
 	//setting content type and status code
-	w.Header().Set("content", "application/json")
+	w.Header().Set("content-type", "application/json")
 	w.WriteHeader(200)
 
 	//sending response

@@ -1,4 +1,4 @@
-from golang:1.23.2-alpine
+FROM golang:1.23.2-alpine
 
 WORKDIR /challenge/
 

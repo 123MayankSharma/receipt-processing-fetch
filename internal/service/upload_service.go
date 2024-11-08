@@ -38,7 +38,7 @@ func UploadService(w http.ResponseWriter, r *http.Request) {
 	response_map := map[string]string{
 		"id": id_string,
 	}
-	log.Printf("https://localhost:8000/receipts/%s/points", id_string)
+	log.Printf("URL for Points for receipt#%s ::  https://localhost:8000/receipts/%s/points\n", id_string, id_string)
 	//Set response header
 	w.Header().Set("content-type", "application/json")
 	w.WriteHeader(http.StatusCreated)
