@@ -18,10 +18,12 @@ on Given Rules
 ``` shell
 docker build -t receipt-processor -f Dockerfile .
 ```
-
 - To Run the app on port 7890, run the following command 
 ``` shell
 docker run -p 7890:8000 receipt-processor:latest
  ```
+# Video Instructions
+
+https://github.com/user-attachments/assets/a65c580b-39a0-48c4-a081-1a7d44981338
 
 
