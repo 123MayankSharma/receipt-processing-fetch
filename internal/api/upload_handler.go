@@ -7,5 +7,5 @@ import (
 )
 
 func UploadHandler() {
-	http.HandleFunc("/receipts/process", upload_service.UploadService)
+	http.HandleFunc("POST /receipts/process", upload_service.UploadService)
 }
