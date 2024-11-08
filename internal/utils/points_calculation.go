@@ -1,7 +1,6 @@
 package utils
 
 import (
-	"log"
 	"math"
 	"strconv"
 	"strings"
@@ -58,7 +57,7 @@ func itemDescriptionLengthScore(ItemList []item) int64 {
 		trimmedDescription := strings.TrimSpace(item.ShortDescription)
 		if len(trimmedDescription)%3 == 0 {
 			price, _ := strconv.ParseFloat(item.Price, 64)
-			score_addition := int64(math.Round(price*0.2) + 1)
+			score_addition := int64(math.Ceil(price * 0.2))
 			score += score_addition
 
 		}
@@ -79,8 +78,8 @@ func purchaseDayScore(purchaseDate string) int64 {
 }
 
 func purchaseTimeScore(purchaseTime string) int64 {
-	startTime := 1400 * 60
-	endTime := 1600 * 60
+	startTime := 14 * 60
+	endTime := 16 * 60
 
 	purchaseTimeValues := strings.Split(purchaseTime, ":")
 	hourValue, _ := strconv.ParseInt(purchaseTimeValues[0], 10, 64)
@@ -97,22 +96,21 @@ func purchaseTimeScore(purchaseTime string) int64 {
 
 func PointsCalculation(receipt Receipt) int64 {
 	var points int64 = 0
-	log.Println("---------------------------------------------------------------------------")
+	//calculating points according to given rules
 	points += isAlphaNumericScore(receipt.Retailer)
-	print(points, "\n")
+
 	points += totalValueScore(receipt.Total)
-	print(points, "\n")
+
 	points += totalMultipleScore(receipt.Total)
-	print(points, "\n")
+
 	points += itemsLengthScore(receipt.Items)
-	print(points, "\n")
+
 	points += itemDescriptionLengthScore(receipt.Items)
-	print(points, "\n")
+
 	points += purchaseDayScore(receipt.PurchaseDate)
-	print(points, "\n")
+
 	points += purchaseTimeScore(receipt.PurchaseTime)
-	print(points, "\n")
-	log.Println("---------------------------------------------------------------------------")
+
 	return int64(points)
 
 }
