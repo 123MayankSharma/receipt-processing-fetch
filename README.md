@@ -15,9 +15,13 @@ on Given Rules
 - navigate to Root of Repository
 - Then run the below command for building the image for receipt-processor
 
-``` docker build -t receipt-processor -f Dockerfile . ```
+``` shell
+docker build -t receipt-processor -f Dockerfile .
+```
 
 - To Run the app on port 7890, run the following command 
-``` docker run -p 7890:8000 receipt-processor:latest ```
+``` shell
+docker run -p 7890:8000 receipt-processor:latest
+ ```
 
 
