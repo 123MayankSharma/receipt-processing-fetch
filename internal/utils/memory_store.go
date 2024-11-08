@@ -3,37 +3,22 @@ package utils
 import (
 	"fmt"
 	"sync"
+
+	models "github.com/123MayankSharma/receipt-processor-challenge/models"
 )
-
-type item struct {
-	ShortDescription string `json:"shortDescription"`
-	Price            string `json:"price"`
-}
-
-type Receipt struct {
-	Retailer     string `json:"retailer"`
-	PurchaseDate string `json:"purchaseDate"`
-	PurchaseTime string `json:"purchaseTime"`
-	Items        []item `json:"items"`
-	Total        string `json:"total"`
-}
-
-type Memory_store struct {
-	Receipts map[string]Receipt
-}
 
 var lock = &sync.Mutex{}
 
-var store *Memory_store
+var store *models.Memory_store
 
-func GetStore() *Memory_store {
+func GetStore() *models.Memory_store {
 	if store == nil {
 		lock.Lock()
 		defer lock.Unlock()
 		if store == nil {
 			fmt.Println("Instantiating Receipt Store...\n")
-			store = &Memory_store{
-				Receipts: make(map[string]Receipt),
+			store = &models.Memory_store{
+				Receipts: make(map[string]models.Receipt),
 			}
 		} else {
 			fmt.Println("Store already Exists")

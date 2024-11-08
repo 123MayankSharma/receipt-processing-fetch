@@ -5,6 +5,8 @@ import (
 	"strconv"
 	"strings"
 	"unicode"
+
+	models "github.com/123MayankSharma/receipt-processor-challenge/models"
 )
 
 func isAlphaNumericScore(text string) int64 {
@@ -42,7 +44,7 @@ func totalMultipleScore(total string) int64 {
 
 }
 
-func itemsLengthScore(ItemList []item) int64 {
+func itemsLengthScore(ItemList []models.Item) int64 {
 	var score int64 = 0
 
 	score += int64(len(ItemList) / 2)
@@ -50,7 +52,7 @@ func itemsLengthScore(ItemList []item) int64 {
 	return score * 5
 }
 
-func itemDescriptionLengthScore(ItemList []item) int64 {
+func itemDescriptionLengthScore(ItemList []models.Item) int64 {
 	var score int64 = 0
 
 	for _, item := range ItemList {
@@ -94,7 +96,7 @@ func purchaseTimeScore(purchaseTime string) int64 {
 
 }
 
-func PointsCalculation(receipt Receipt) int64 {
+func PointsCalculation(receipt models.Receipt) int64 {
 	var points int64 = 0
 	//calculating points according to given rules
 	points += isAlphaNumericScore(receipt.Retailer)

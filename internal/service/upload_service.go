@@ -7,13 +7,14 @@ import (
 	"net/http"
 
 	utilPkg "github.com/123MayankSharma/receipt-processor-challenge/internal/utils"
+	models "github.com/123MayankSharma/receipt-processor-challenge/models"
 
 	"github.com/google/uuid"
 )
 
 func UploadService(w http.ResponseWriter, r *http.Request) {
 	//parse request body
-	var RequestBody utilPkg.Receipt
+	var RequestBody models.Receipt
 	decoder := json.NewDecoder(r.Body)
 	err := decoder.Decode(&RequestBody)
 	if err != nil {
